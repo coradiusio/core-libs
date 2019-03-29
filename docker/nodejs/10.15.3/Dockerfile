@@ -1,4 +1,4 @@
-FROM node:8.4.0-alpine
+FROM node:10.15.3-alpine
 
 #add extra packages here if you need
 
