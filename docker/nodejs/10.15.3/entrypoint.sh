@@ -6,7 +6,7 @@ while [[ $# -gt 0 ]];do
   key="$1"
   port="$2"
   while [[ -z ${is_service_up[$1]} ]];do
-    result=$(netcat -zv $1 $2  2>&1)
+    result=$(nc -zv $1 $2  2>&1)
     echo "Connection $1:$2 :- $result"
     if [[ "$result" == *"succeeded"* ]] || [[ "$result" == *"open"* ]]; then
       echo $1':'$2' connection successful'
