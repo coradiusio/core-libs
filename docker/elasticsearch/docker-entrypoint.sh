@@ -2,6 +2,12 @@
 
 set -e
 
+count_lines=$(grep  vm.max_map_count /etc/sysctl.conf|wc -l)
+if [[ $count_lines -ne 1 ]]; then
+	sudo echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+	sudo sysctl -p -q
+fi
+
 # Add elasticsearch as command if needed
 if [ "${1:0:1}" = '-' ]; then
 	set -- elasticsearch "$@"
