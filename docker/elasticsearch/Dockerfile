@@ -1,5 +1,6 @@
 FROM openjdk:8-jre-alpine
 
+RUN echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 # ensure elasticsearch user exists
 RUN addgroup -S elasticsearch && adduser -S -G elasticsearch elasticsearch
 
